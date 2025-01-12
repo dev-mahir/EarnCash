@@ -1,21 +1,25 @@
-import { Text, View, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-export default function EarnScreen() {
+const EarnScreen = () => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>About screen</Text>
+			<Text style={styles.text}>Welcome to the Earn Screen!</Text>
 		</View>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#25292e",
 		justifyContent: "center",
 		alignItems: "center",
+		backgroundColor: "#f5f5f5",
 	},
 	text: {
-		color: "#fff",
+		fontSize: 24,
+		color: "#007bff",
 	},
 });
+
+export default EarnScreen;
