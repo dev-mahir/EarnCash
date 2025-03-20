@@ -19,3 +19,27 @@ router.post("/pay", async (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
+
+
+const Advertiser = require("../models/Advertiser");
+
+router.post("/update-balance", async (req, res) => {
+  try {
+    const { advertiserId, amount } = req.body;
+    const advertiser = await Advertiser.findById(advertiserId);
+
+    if (advertiser) {
+      advertiser.balance += amount;
+      await advertiser.save();
+      res.json({ message: "Balance updated successfully", balance: advertiser.balance });
+    } else {
+      res.status(404).json({ message: "Advertiser not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
